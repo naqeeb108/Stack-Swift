@@ -6,8 +6,8 @@ public class StackWithArrays<T> {
     
     init() {}
     
-    public func push(vale: T) {
-        arrayOfElement.append(vale)
+    public func push(value: T) {
+        arrayOfElement.append(value)
     }
     
     public func pop() -> T? {
@@ -29,17 +29,90 @@ public class StackWithArrays<T> {
     }
 }
 
-let stack = StackWithArrays<Int>()
-stack.push(vale: 2)
-stack.push(vale: 5)
-stack.push(vale: 7)
-stack.pop()
-stack.display()
-print("peek is \(stack.peek())")
-stack.pop()
-print(stack.isEmpty())
-print("done")
 
+public class StackWithLinkedList<T> {
+    
+    private var top: Node?
+
+    init() {}
+    
+    public func push(value: T) {
+        
+        let node = Node(data: value)
+        
+        if !isEmpty() {
+            node.next = top
+            top = node
+        } else {
+            top = node
+        }
+    }
+    
+    public func pop() {
+        if isEmpty() { return }
+        let temp = top?.next
+        top?.next = nil
+        top = temp
+    }
+    
+    public func peek() -> T? {
+        return top?.data
+    }
+    
+    public func isEmpty() -> Bool {
+        return top == nil
+    }
+    
+    public func display() {
+        var temp = top
+        while temp != nil {
+            print(temp?.data)
+            temp = temp?.next
+        }
+    }
+    
+}
+
+extension StackWithLinkedList {
+    private class Node {
+        var data: T
+        var next: Node?
+        
+        init(data: T, next: Node? = nil) {
+            self.data = data
+            self.next = next
+        }
+    }
+}
+
+print("Stack Using Array")
+let stackWithArray = StackWithArrays<Int>()
+stackWithArray.push(value: 2)
+stackWithArray.push(value: 5)
+stackWithArray.push(value: 7)
+stackWithArray.pop()
+stackWithArray.display()
+print("peek is \(stackWithArray.peek())")
+stackWithArray.pop()
+print(stackWithArray.isEmpty())
+
+print("Stack Using Linkedlist")
+var stackWithLinkedlist = StackWithLinkedList<Int>()
+stackWithLinkedlist.push(value: 5)
+stackWithLinkedlist.push(value: 8)
+stackWithLinkedlist.push(value: 11)
+stackWithLinkedlist.push(value: 12)
+stackWithLinkedlist.display()
+print("peek is \(stackWithLinkedlist.peek())")
+print("isEmpty \(stackWithLinkedlist.isEmpty())")
+stackWithLinkedlist.pop()
+print("peek is \(stackWithLinkedlist.peek())")
+print("isEmpty \(stackWithLinkedlist.isEmpty())")
+stackWithLinkedlist.pop()
+print("peek is \(stackWithLinkedlist.peek())")
+print("isEmpty \(stackWithLinkedlist.isEmpty())")
+      
+print("done")
 
 
 
