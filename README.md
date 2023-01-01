@@ -25,7 +25,7 @@ In this project I implemented basic stack operations using Swift programming lan
   
  - Coding Challenges
   ```
-    comming soon...
+    checkBalanceParentheses
   ```
   
 ## Contact
