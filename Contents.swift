@@ -85,6 +85,23 @@ extension StackWithLinkedList {
     }
 }
 
+func checkBalanceParentheses(string: String) -> Bool {
+    let stack = StackWithArrays<String>()
+    for char in string {
+        if String(char) == "(" {
+            stack.push(value: "(")
+        }
+        if String(char) == ")" {
+            if !stack.isEmpty() {
+                stack.pop()
+            } else {
+                return false
+            }
+        }
+    }
+    return stack.isEmpty()
+}
+
 print("Stack Using Array")
 let stackWithArray = StackWithArrays<Int>()
 stackWithArray.push(value: 2)
@@ -112,6 +129,8 @@ stackWithLinkedlist.pop()
 print("peek is \(stackWithLinkedlist.peek())")
 print("isEmpty \(stackWithLinkedlist.isEmpty())")
       
+//-----------Coding Challenges-------------------
+print(checkBalanceParentheses(string: ")(({bal{}}))"))
 print("done")
 
 
