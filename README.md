@@ -13,7 +13,7 @@ In this project I implemented basic stack operations using Swift programming lan
     isEmpty
     display
   ```
-- With Arrays
+- With Linkedlist
   
   ```
    push
